@@ -18,6 +18,11 @@ let books = [
     id: 4,
     name: 'Death Notice',
     type: 'Comic'
+  },
+  {
+    id: 5,
+    name: 'TES',
+    type: 'Comic'
   }
 ]
 
