@@ -19,11 +19,6 @@ let books = [
     name: 'Death Notice',
     type: 'Comic'
   },
-  {
-    id: 5,
-    name: 'TES',
-    type: 'Comic'
-  }
 ]
 
 module.exports = books;

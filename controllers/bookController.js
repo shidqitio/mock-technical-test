@@ -87,35 +87,22 @@ exports.createBook = (req, res ) => {
 }
 
 exports.delete = (req, res) => {
-    try {
-        const idBooks = req.params.id
-        let dataBaru = []
-        books.map((i) => {
-            if (i.id !== parseInt(idBooks)) {
-                dataBaru.push({
-                    id: i.id,
-                    name: i.name,
-                    type: i.type
-                })
-            }
-        })
-        if (dataBaru.length === 0) {
-            return res.json({
-                status: "failed",
-                message: "Data Tidak Ditemukan",
-                data: []
-            })
-        }
+    const id = parseInt(req.params.id)
+
+    const removeIndex = books.findIndex(book => book.id === id);
+
+    if (removeIndex !== -1) {
+    // Remove the item at the specified index
+    books.splice(removeIndex, 1);
+    }
+    else {
         return res.json({
-            status: "Success",
-            message: "Berhasil Menghapus Data",
-            data: dataBaru
-        })
-    } catch (error) {
-        res.json({
-            status: "failed",
-            message: error,
-            data: []
+            message : "Failed",
         })
     }
+
+    return res.json({
+        message : "Success", 
+        data : books
+    })
 }
